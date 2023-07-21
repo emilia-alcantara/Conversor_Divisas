@@ -6,13 +6,134 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/txtToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <EditText
+        android:id="@+id/editMontoInicial"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Spinner
+        android:id="@+id/spnMonedaInicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/txtConvertirA"
+        android:layout_width="129dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/editMontoInicial"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editMontoInicial"
+        app:layout_constraintTop_toBottomOf="@+id/editMontoInicial" />
+
+    <Spinner
+        android:id="@+id/spnMonedaConvertida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="@+id/spnMonedaInicial"
+        app:layout_constraintStart_toStartOf="@+id/spnMonedaInicial"
+        app:layout_constraintTop_toBottomOf="@+id/spnMonedaInicial" />
+
+    <Button
+        android:id="@+id/btnConvertir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.7" />
 </androidx.constraintlayout.widget.ConstraintLayout>
