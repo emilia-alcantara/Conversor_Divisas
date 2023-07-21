@@ -4,28 +4,36 @@ import android.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.SpinnerAdapter
 import cl.individual.jueves200723p1.databinding.ActivityMainBinding
 import coil.load
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private val divisas = listOf<String>("USD", "CLP", "EUR")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val spinnerAdapter = ArrayAdapter(this, R.layout.simple_spinner_item, divisas)
 
+        initListeners()
+        initSpinner(spinnerAdapter)
+        cargarImagen()
+    }
+
+    private fun cargarImagen() {
+        binding.imgLogo.load("https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW9uZXl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60")
+    }
+
+    private fun initSpinner(spinnerAdapter: SpinnerAdapter) {
         binding.spnMonedaInicial.adapter = spinnerAdapter
         binding.spnMonedaConvertida.adapter = spinnerAdapter
-
-        binding.imgLogo.load("https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW9uZXl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60")
-
-        initListeners()
     }
 
     private fun initListeners() {
-        binding.btnConvertir.setOnClickListener { v ->
+        binding.btnConvertir.setOnClickListener {
             val montoInicial = binding.editMontoInicial.text.toString().toDouble()
             val divisaActual = binding.spnMonedaInicial.selectedItem.toString()
             val divisaCambio = binding.spnMonedaConvertida.selectedItem.toString()
@@ -49,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             } else if (divisaCambio == "USD") {
                 resultado = montoInicial * 1
             } else if (divisaCambio == "EUR") {
-                resultado =  montoInicial * 0.89
+                resultado = montoInicial * 0.89
             }
 
             "CLP" -> if (divisaCambio == "CLP") {
