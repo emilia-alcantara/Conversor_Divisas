@@ -5,18 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import cl.individual.jueves200723p1.databinding.ActivityMainBinding
+import coil.load
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val divisas = listOf<String>("USD", "CLP", "EUR")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val spinnerAdapter = ArrayAdapter(this, R.layout.simple_spinner_item, divisas)
 
         binding.spnMonedaInicial.adapter = spinnerAdapter
         binding.spnMonedaConvertida.adapter = spinnerAdapter
+
+        binding.imgLogo.load("https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW9uZXl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60")
 
         initListeners()
     }
@@ -34,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding.btnReset.setOnClickListener {
             limpiar()
         }
-
 
     }
 
